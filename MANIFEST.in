@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include ibt_call_center *.css
+recursive-include ibt_call_center *.csv
+recursive-include ibt_call_center *.html
+recursive-include ibt_call_center *.ico
+recursive-include ibt_call_center *.js
+recursive-include ibt_call_center *.json
+recursive-include ibt_call_center *.md
+recursive-include ibt_call_center *.png
+recursive-include ibt_call_center *.py
+recursive-include ibt_call_center *.svg
+recursive-include ibt_call_center *.txt
+recursive-exclude ibt_call_center *.pyc
