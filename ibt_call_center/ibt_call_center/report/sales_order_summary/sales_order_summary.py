@@ -5,10 +5,8 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
-from frappe.utils import getdate, nowdate
 
 def execute(filters=None):
-	filters.transaction_date = getdate(filters.transaction_date or nowdate())
 	columns, data = [], []
 	columns = get_columns()
 	data = get_data(filters)
@@ -30,9 +28,9 @@ def get_columns():
 	return columns
 
 def get_data(filters):
-	cond = "1=1"
-	if filters.get("transaction_date"):
-		cond = "transaction_date = %(transaction_date)s"
+	
+	where_clause = ' and transaction_date = '
+	where_clause += filters.transaction_date and '"%s" ' % filters.transaction_date or 'DATE_ADD(CURDATE(), INTERVAL -1 DAY) '
 
 	data = frappe.db.sql("""
 		SELECT
@@ -40,7 +38,7 @@ def get_data(filters):
 		FROM
 			`tabSales Order`
 		WHERE
-			docstatus < 2 and {cond}
-	""".format(cond=cond), filters, as_dict=1)
+			docstatus < 2
+			{conditions} """.format(conditions=where_clause), as_dict=1)
 
 	return data

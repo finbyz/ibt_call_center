@@ -5,7 +5,7 @@ from email.utils import formataddr
 @frappe.whitelist()
 def so_after_submit(self, method):
 
-	if self.store_email != '':
+	if self.store_email != '' and self.store != None:
 		message = """<p>&nbsp;</p>
 				<table style="height: 43px;" border="1" width="504">
 				<tbody>
