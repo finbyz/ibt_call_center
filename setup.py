@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
-from pip.req import parse_requirements
 import re, ast
 
 # get version from __version__ variable in ibt_call_center/__init__.py
