@@ -28,7 +28,7 @@ def so_after_submit(self, method):
 				</tbody>
 				</table>""".format(self.customer, self.mobile, self.order_type, self.grand_total)
 
-		sender = formataddr(['Notifications', 'callcenteribt@gmail.com'])
+		sender = formataddr(['Notifications', 'alerts@ibtevolve.net'])
 
 		frappe.sendmail(recipients=[self.store_email], 
 						sender= sender,
